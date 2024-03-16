@@ -22,16 +22,16 @@ async def Handle_StartMsg(bot:Client, msg:Message):
     if msg.chat.type == enums.ChatType.SUPERGROUP and not await db.is_user_exist(msg.from_user.id):
         botusername = await bot.get_me()
         btn = [
-            [InlineKeyboardButton(text='⚡ BOT PM', url=f'https://t.me/{botusername.username}')],
-            [InlineKeyboardButton(text='💻 Dᴇᴠᴇʟᴏᴘᴇʀ', url='https://t.me/Snowball_Official')]
+            [InlineKeyboardButton(text='BOT PM', url=f'https://t.me/{botusername.username}')],
+            [InlineKeyboardButton(text='Help', callback_data='help')]
         ]
 
         await Snowdev.edit(text=Txt.GROUP_START_MSG.format(msg.from_user.mention), reply_markup=InlineKeyboardMarkup(btn))
     
     else:
         btn = [
-            [InlineKeyboardButton(text='Help', callback_data='help'), InlineKeyboardButton(text='🌨️ Aʙᴏᴜᴛ', callback_data='about')],
-            [InlineKeyboardButton(text='Updates', url='https://t.me/AnimeXWrld'), InlineKeyboardButton(text='💻 Dᴇᴠᴇʟᴏᴘᴇʀ', url='https://t.me/Snowball_Official')]
+            [InlineKeyboardButton(text='Help', callback_data='help'), InlineKeyboardButton(text='About', callback_data='about')],
+            [InlineKeyboardButton(text='Update Channel', url='https://t.me/AnimeXWrld')]
         ]
 
         if Config.START_PIC:
@@ -52,7 +52,7 @@ async def Files_Option(bot:Client, message:Message):
         botusername = await bot.get_me()
         btn = [
             [InlineKeyboardButton(text='Bot PM', url=f'https://t.me/{botusername.username}')],
-            [InlineKeyboardButton(text='Owner', url='https://t.me/soulxsociety')]
+            [InlineKeyboardButton(text='Help', callback_data='help')]
         ]
 
         return await SnowDev.edit(text=Txt.GROUP_START_MSG.format(message.from_user.mention), reply_markup=InlineKeyboardMarkup(btn))
