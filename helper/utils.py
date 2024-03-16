@@ -34,8 +34,8 @@ async def progress_for_pyrogram(current, total, ud_type, message, start):
         estimated_total_time = TimeFormatter(milliseconds=estimated_total_time)
 
         progress = "{0}{1}".format(
-            ''.join(["⬢" for i in range(math.floor(percentage / 5))]),
-            ''.join(["⬡" for i in range(20 - math.floor(percentage / 5))])
+            ''.join(["■" for i in range(math.floor(percentage / 5))]),
+            ''.join(["□" for i in range(20 - math.floor(percentage / 5))])
         )            
         tmp = progress + Txt.PROGRESS_BAR.format( 
             round(percentage, 2),
@@ -47,7 +47,7 @@ async def progress_for_pyrogram(current, total, ud_type, message, start):
         try:
             await message.edit(
                 text=f"{ud_type}\n\n{tmp}",               
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("✖️ 𝙲𝙰𝙽𝙲𝙴𝙻 ✖️", callback_data=f"close-{message.from_user.id}")]])                                               
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Cancel", callback_data=f"close-{message.from_user.id}")]])                                               
             )
         except:
             pass
@@ -107,7 +107,7 @@ async def send_log(b, u):
         time = curr.strftime('%I:%M:%S %p')
         await b.send_message(
             Config.LOG_CHANNEL,
-            f"**--Nᴇᴡ Uꜱᴇʀ Sᴛᴀʀᴛᴇᴅ Tʜᴇ Bᴏᴛ--**\n\nUꜱᴇʀ: {u.mention}\nIᴅ: `{u.id}`\nUɴ: @{u.username}\n\nDᴀᴛᴇ: {date}\nTɪᴍᴇ: {time}\n\nBy: @{botusername.username}"
+            f"**--New User Sᴛᴀʀᴛᴇᴅ Tʜᴇ Bᴏᴛ--**\n\nUꜱᴇʀ: {u.mention}\nIᴅ: `{u.id}`\nUɴ: @{u.username}\n\nDᴀᴛᴇ: {date}\nTɪᴍᴇ: {time}\n\nBy: @{botusername.username}"
         )
         
 
@@ -221,8 +221,8 @@ async def CompressVideo(bot, query, ffmpegcode, c_thumb):
         await ms.edit(
             "**🗜 Compressing...**",
             reply_markup=InlineKeyboardMarkup([
-                [InlineKeyboardButton(text='Sᴛᴀᴛs', callback_data=f'stats-{UID}')],
-                [InlineKeyboardButton(text='Cᴀɴᴄᴇʟ', callback_data=f'skip-{UID}')]
+                [InlineKeyboardButton(text='Stats', callback_data=f'stats-{UID}')],
+                [InlineKeyboardButton(text='Cancel', callback_data=f'skip-{UID}')]
             ])
         )
         
